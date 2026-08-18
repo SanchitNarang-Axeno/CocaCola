@@ -1,47 +1,13 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, loadCSS, loadScript } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-function updateActiveDot(dots, ul) {
-  const { scrollLeft } = ul;
-  const items = [...ul.children];
-  let closest = 0;
-  let closestDistance = Infinity;
-  items.forEach((li, i) => {
-    const distance = Math.abs(li.offsetLeft - scrollLeft);
-    if (distance < closestDistance) {
-      closestDistance = distance;
-      closest = i;
-    }
-  });
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === closest));
-}
-
-function buildDots(ul, nav) {
-  const items = [...ul.children];
-  const dots = items.map((li, i) => {
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'content-cards-dot';
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.addEventListener('click', () => {
-      li.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-    });
-    nav.append(dot);
-    return dot;
-  });
-  dots[0]?.classList.add('active');
-
-  let ticking = false;
-  ul.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(() => {
-      updateActiveDot(dots, ul);
-      ticking = false;
-    });
-  }, { passive: true });
-
-  return dots;
+async function loadSplide() {
+  const base = `${window.hlx.codeBasePath}/blocks/content-cards`;
+  await Promise.all([
+    loadCSS(`${base}/splide-core.min.css`),
+    loadScript(`${base}/splide.min.js`),
+  ]);
+  return window.Splide;
 }
 
 export default function decorate(block) {
@@ -52,24 +18,53 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  const ul = document.createElement('ul');
-  ul.className = 'content-cards-list';
+  const list = document.createElement('ul');
+  list.className = 'splide__list';
+  // field order per the content-card model: image, cardHeading, text, link
   rows.forEach((row) => {
     const li = document.createElement('li');
-    li.className = 'content-cards-card';
+    li.className = 'splide__slide content-cards-card';
     moveInstrumentation(row, li);
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'content-cards-card-image';
-      } else {
-        div.className = 'content-cards-card-body';
-      }
-    });
-    ul.append(li);
+
+    const [imageDiv, headingDiv, textDiv, linkDiv] = row.children;
+
+    if (imageDiv) {
+      imageDiv.className = 'content-cards-card-image';
+      li.append(imageDiv);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'content-cards-card-body';
+
+    if (headingDiv && headingDiv.textContent.trim()) {
+      const h3 = document.createElement('h3');
+      moveInstrumentation(headingDiv, h3);
+      const wrapperP = headingDiv.children.length === 1 && headingDiv.firstElementChild.tagName === 'P'
+        ? headingDiv.firstElementChild : headingDiv;
+      h3.append(...wrapperP.childNodes);
+      body.append(h3);
+    }
+
+    if (textDiv) {
+      moveInstrumentation(textDiv, body);
+      body.append(...textDiv.childNodes);
+    }
+
+    const link = linkDiv?.querySelector('a');
+    if (link) {
+      const p = document.createElement('p');
+      p.className = 'button-wrapper';
+      moveInstrumentation(linkDiv, p);
+      link.className = 'button';
+      p.append(link);
+      body.append(p);
+    }
+
+    li.append(body);
+    list.append(li);
   });
 
-  ul.querySelectorAll('picture > img').forEach((img) => {
+  list.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [
       { media: '(min-width: 600px)', width: '750' },
       { width: '500' },
@@ -79,7 +74,7 @@ export default function decorate(block) {
   });
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'content-cards-wrapper';
+  wrapper.className = 'content-cards-inner';
 
   if (headingText) {
     const h2 = document.createElement('h2');
@@ -88,18 +83,55 @@ export default function decorate(block) {
     wrapper.append(h2);
   }
 
+  const splideEl = document.createElement('div');
+  splideEl.className = 'splide content-cards-splide';
+
   const track = document.createElement('div');
-  track.className = 'content-cards-track';
-  track.append(ul);
-  wrapper.append(track);
+  track.className = 'splide__track';
+  track.append(list);
+  splideEl.append(track);
 
-  if (ul.children.length > 1) {
-    const nav = document.createElement('div');
-    nav.className = 'content-cards-nav';
-    wrapper.append(nav);
-    // build dots after layout so offsetLeft is accurate
-    requestAnimationFrame(() => buildDots(ul, nav));
-  }
-
+  wrapper.append(splideEl);
   block.replaceChildren(wrapper);
+
+  const slideCount = list.children.length;
+
+  if (slideCount > 1) {
+    const nav = document.createElement('ul');
+    nav.className = 'content-cards-pagination';
+    const dots = [...Array(slideCount)].map((_, i) => {
+      const li = document.createElement('li');
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      li.append(dot);
+      nav.append(li);
+      return dot;
+    });
+    dots[0].classList.add('is-active');
+    wrapper.append(nav);
+
+    loadSplide().then((Splide) => {
+      const splide = new Splide(splideEl, {
+        type: 'loop',
+        perPage: 3,
+        gap: '1.5rem',
+        pagination: false,
+        arrows: false,
+        breakpoints: {
+          900: { perPage: 3 },
+          600: { perPage: 2, padding: { right: '2rem', left: '2rem' } },
+          599: { perPage: 1, padding: { right: '2rem', left: '2rem' } },
+        },
+      }).mount();
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => splide.go(i));
+      });
+      splide.on('move', (newIndex) => {
+        const realIndex = ((newIndex % slideCount) + slideCount) % slideCount;
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === realIndex));
+      });
+    });
+  }
 }
