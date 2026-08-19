@@ -18,8 +18,8 @@
       "fragment",
       "content-cards",
       "carousel",
-      "sustainability",
-      "footer"
+      "coca-cola-footer"
+      
     ]
   },
   {
@@ -38,6 +38,13 @@
     "id": "carousel",
     "components": [
       "slide"
+    ]
+  },
+  {
+    "id": "coca-cola-footer",
+    "components": [
+      "coca-cola-footer-column",
+      "coca-cola-footer-social-link"
     ]
   },
   {
@@ -62,13 +69,6 @@
     ]
   },
   {
-    "id": "footer",
-    "components": [
-      "footer-column",
-      "footer-social-link"
-    ]
-  },
-  {
     "id": "section-filter",
     "components": [
       "heading"
@@ -82,6 +82,8 @@
   },
   {
     "id": "sustainability",
-    "components": ["sustainability"]
+    "components": [
+      "sustainability"
+    ]
   }
 ]

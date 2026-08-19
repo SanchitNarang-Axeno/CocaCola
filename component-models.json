@@ -289,6 +289,81 @@
     ]
   },
   {
+    "id": "coca-cola-footer",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "logo",
+        "label": "Logo",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "name": "logoLink",
+        "label": "Logo Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copyright",
+        "label": "Copyright Text"
+      }
+    ]
+  },
+  {
+    "id": "coca-cola-footer-column",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "links",
+        "label": "Links",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "coca-cola-footer-social-link",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "platform",
+        "label": "Platform",
+        "options": [
+          {
+            "name": "X",
+            "value": "x"
+          },
+          {
+            "name": "Instagram",
+            "value": "instagram"
+          },
+          {
+            "name": "YouTube",
+            "value": "youtube"
+          },
+          {
+            "name": "Facebook",
+            "value": "facebook"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -356,81 +431,6 @@
         "component": "text",
         "name": "linkText",
         "label": "Link Text"
-      }
-    ]
-  },
-  {
-    "id": "footer",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "logo",
-        "label": "Logo",
-        "multi": false
-      },
-      {
-        "component": "aem-content",
-        "name": "logoLink",
-        "label": "Logo Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "copyright",
-        "label": "Copyright Text"
-      }
-    ]
-  },
-  {
-    "id": "footer-column",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "heading",
-        "label": "Heading"
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "links",
-        "label": "Links",
-        "value": ""
-      }
-    ]
-  },
-  {
-    "id": "footer-social-link",
-    "fields": [
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "platform",
-        "label": "Platform",
-        "options": [
-          {
-            "name": "X",
-            "value": "x"
-          },
-          {
-            "name": "Instagram",
-            "value": "instagram"
-          },
-          {
-            "name": "YouTube",
-            "value": "youtube"
-          },
-          {
-            "name": "Facebook",
-            "value": "facebook"
-          }
-        ]
-      },
-      {
-        "component": "aem-content",
-        "name": "link",
-        "label": "Link"
       }
     ]
   },
@@ -606,41 +606,41 @@
     ]
   },
   {
-      "id": "sustainability",
-      "fields": [
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
-        },        
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "heading",
-          "label": "Heading",
-          "value": "Sustainability, Built Into Every Pour"
-        },
-        {
-          "component": "richtext",
-          "valueType": "string",
-          "name": "description",
-          "label": "Description"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "buttonText",
-          "label": "Button Text",
-          "value": "Learn More"
-        },
-        {
-          "component": "aem-content",
-          "valueType": "string",
-          "name": "buttonLink",
-          "label": "Button Link"
-        }
-      ]
-    }
+    "id": "sustainability",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading",
+        "value": "Sustainability, Built Into Every Pour"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "buttonText",
+        "label": "Button Text",
+        "value": "Learn More"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "label": "Button Link"
+      }
+    ]
+  }
 ]
