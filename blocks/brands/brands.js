@@ -46,9 +46,7 @@ export default function decorate(block) {
       }
 
       grid.appendChild(item);
-    }
-
-    if (!isBrand) {
+    } else {
       // Treat non-brand content as the heading
       if (!titleWrapper.children.length) {
         titleWrapper.appendChild(item);
