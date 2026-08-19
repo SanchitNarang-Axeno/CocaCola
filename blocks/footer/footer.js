@@ -1,5 +1,32 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
+import { getMetadata, createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
+/**
+ * Fetches the raw markup of the footer content page. Unlike the shared
+ * `loadFragment` helper, this does not run block/section decoration on the
+ * result: the authored `.footer` block inside it would otherwise be
+ * decorated (and thus loaded) a second time, recursively.
+ * @param {string} path The path to the footer content page
+ * @returns {Element} The `.footer` block found in that page, if any
+ */
+async function loadFooterContent(path) {
+  const cleanPath = path.replace(/\.plain\.html$/, '');
+  const resp = await fetch(`${cleanPath}.plain.html`);
+  if (!resp.ok) return null;
+  const main = document.createElement('main');
+  main.innerHTML = await resp.text();
+
+  // reset base path for media to the footer page's base, like loadFragment does
+  const base = new URL(cleanPath, window.location);
+  main.querySelectorAll('img[src^="./media_"]').forEach((img) => {
+    img.src = new URL(img.getAttribute('src'), base).href;
+  });
+  main.querySelectorAll('source[srcset^="./media_"]').forEach((source) => {
+    source.srcset = new URL(source.getAttribute('srcset'), base).href;
+  });
+
+  return main.querySelector('.footer');
+}
 
 // media query match that indicates desktop width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -22,66 +49,64 @@ function toggleColumn(button, expanded) {
 }
 
 /**
- * Groups each heading + list pair into a `.footer-column`, turning the
- * heading into an accessible accordion trigger for mobile viewports.
- * @param {Element} content The default content wrapper holding the columns
+ * Builds one accordion column from an authored `footer-column` row.
+ * Row fields (in model order): heading, links.
+ * @param {Element} row The authored row
+ * @param {Number} i The column index, used for a unique id
+ * @returns {Element} The decorated `.footer-column`
  */
-function decorateColumns(content) {
-  const headings = content.querySelectorAll(':scope > h2, :scope > h3, :scope > h4');
-  if (!headings.length) return null;
+function buildColumn(row, i) {
+  const [headingDiv, linksDiv] = row.children;
 
-  const nav = document.createElement('div');
-  nav.className = 'footer-columns';
+  const column = document.createElement('div');
+  column.className = 'footer-column';
+  moveInstrumentation(row, column);
 
-  headings.forEach((heading, i) => {
-    const list = heading.nextElementSibling;
-    if (!list || list.tagName !== 'UL') return;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'footer-column-toggle';
+  button.innerHTML = headingDiv?.innerHTML || '';
+  moveInstrumentation(headingDiv, button);
 
-    const column = document.createElement('div');
-    column.className = 'footer-column';
+  const list = linksDiv?.querySelector('ul') || document.createElement('ul');
+  moveInstrumentation(linksDiv, list);
+  const listId = `footer-column-${i}`;
+  list.id = listId;
+  list.classList.add('footer-column-list');
+  button.setAttribute('aria-controls', listId);
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'footer-column-toggle';
-    button.innerHTML = heading.innerHTML;
-
-    const listId = `footer-column-${i}`;
-    list.id = listId;
-    list.classList.add('footer-column-list');
-    button.setAttribute('aria-controls', listId);
-
-    button.addEventListener('click', () => {
-      if (isDesktop.matches) return;
-      toggleColumn(button, button.dataset.expanded !== 'true');
-    });
-
-    column.append(button, list);
-    nav.append(column);
-    heading.remove();
-
-    toggleColumn(button, false);
+  button.addEventListener('click', () => {
+    if (isDesktop.matches) return;
+    toggleColumn(button, button.dataset.expanded !== 'true');
   });
 
-  isDesktop.addEventListener('change', () => {
-    nav.querySelectorAll('.footer-column-toggle').forEach((button) => {
-      toggleColumn(button, button.dataset.expanded === 'true');
-    });
-  });
-
-  return nav;
+  column.append(button, list);
+  toggleColumn(button, false);
+  return column;
 }
 
 /**
- * Finds the social icon links paragraph and marks it for styling.
- * @param {Element} content The default content wrapper
- * @returns {Element} The social links wrapper, if found
+ * Builds one social icon link from an authored `footer-social-link` row.
+ * Row fields (in model order): platform, link.
+ * @param {Element} row The authored row
+ * @returns {Element} The decorated `<a>`
  */
-function decorateSocialLinks(content) {
-  const icons = content.querySelectorAll(':scope > p span.icon');
-  if (!icons.length) return null;
-  const wrapper = icons[0].closest('p');
-  wrapper.classList.add('footer-social-links');
-  return wrapper;
+function buildSocialLink(row) {
+  const [platformDiv, linkDiv] = row.children;
+  const platform = platformDiv?.textContent.trim().toLowerCase();
+  const href = linkDiv?.querySelector('a')?.href;
+  if (!platform || !href) return null;
+
+  const link = document.createElement('a');
+  link.href = href;
+  link.setAttribute('aria-label', platform);
+  moveInstrumentation(row, link);
+
+  const icon = document.createElement('span');
+  icon.className = `icon icon-${platform}`;
+  link.append(icon);
+
+  return link;
 }
 
 /**
@@ -89,27 +114,71 @@ function decorateSocialLinks(content) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
+  // load the authored footer block from the footer content page
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+  const authored = await loadFooterContent(footerPath);
 
-  // decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  if (!authored) return;
 
-  const content = footer.querySelector('.default-content-wrapper');
-  if (content) {
-    const socialLinks = decorateSocialLinks(content);
-    const columns = decorateColumns(content);
-    if (columns) {
-      if (socialLinks) columns.append(socialLinks);
-      const hr = content.querySelector('hr');
-      if (hr) hr.after(columns);
-      else content.append(columns);
+  const rows = [...authored.children];
+  // block-level fields come first, in model order: logo, logoAlt, logoLink, copyright
+  const [logoDiv, logoAltDiv, logoLinkDiv, copyrightDiv] = rows;
+  const itemRows = rows.slice(4);
+
+  const footer = document.createElement('div');
+
+  const logoImg = logoDiv?.querySelector('img');
+  if (logoImg) {
+    const picture = createOptimizedPicture(logoImg.src, logoAltDiv?.textContent.trim() || '', true);
+    moveInstrumentation(logoImg, picture.querySelector('img'));
+    const brand = document.createElement('p');
+    brand.className = 'footer-brand';
+    const href = logoLinkDiv?.querySelector('a')?.href;
+    if (href) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.append(picture);
+      brand.append(link);
+    } else {
+      brand.append(picture);
     }
+    footer.append(brand);
   }
 
+  footer.append(document.createElement('hr'));
+
+  const columns = document.createElement('div');
+  columns.className = 'footer-columns';
+
+  const socialLinks = document.createElement('p');
+  socialLinks.className = 'footer-social-links';
+
+  let columnIndex = 0;
+  itemRows.forEach((row) => {
+    const isColumn = row.children[1]?.querySelector('ul');
+    if (isColumn) {
+      columns.append(buildColumn(row, columnIndex));
+      columnIndex += 1;
+    } else {
+      const link = buildSocialLink(row);
+      if (link) socialLinks.append(link);
+    }
+  });
+  if (socialLinks.children.length) columns.append(socialLinks);
+
+  footer.append(columns);
+  footer.append(document.createElement('hr'));
+
+  if (copyrightDiv?.textContent.trim()) {
+    const copyright = document.createElement('p');
+    copyright.className = 'footer-copyright';
+    moveInstrumentation(copyrightDiv, copyright);
+    copyright.append(...copyrightDiv.childNodes);
+    footer.append(copyright);
+  }
+
+  decorateIcons(footer);
   block.append(footer);
 }
