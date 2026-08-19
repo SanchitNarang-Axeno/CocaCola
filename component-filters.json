@@ -17,7 +17,10 @@
       "columns",
       "fragment",
       "content-cards",
-      "carousel"
+      "carousel",
+      "brands",
+      "promo-card",
+      "heading"
     ]
   },
   {
