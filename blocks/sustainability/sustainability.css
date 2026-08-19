@@ -1,0 +1,128 @@
+/* Sustainability Feature block */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+
+
+.sustainability.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 20px;
+  border-radius: 12px;
+  
+}
+
+/* ---- Image (card with graphic) ---- */
+
+.sustainability .sustainability-image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  order: -1; /* image on top on mobile */
+}
+
+.sustainability .sustainability-image picture {
+  display: block;
+  width: 100%;
+}
+
+.sustainability .sustainability-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---- Text content ---- */
+
+.sustainability .sustainability-content {
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+}
+
+.sustainability .sustainability-eyebrow {
+  color: #2c8a3d;
+  font-weight: 700;
+  font-size: var(--body-font-size-s, 14px);
+  margin: 0 0 8px;
+  text-transform: none;
+}
+
+.sustainability .sustainability-heading {
+  font-size: var(--heading-font-size-l, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: #1a1a1a;
+   font-family: "Noto Sans" !important;
+}
+
+.sustainability .sustainability-description {
+  font-size: var(--body-font-size-m, 16px);
+  line-height: 1.5;
+  color: #4a4a4a;
+  margin: 0 0 24px;
+     font-family: "Noto Sans" !important;
+}
+
+.sustainability .sustainability-description p {
+  margin: 0;
+}
+
+.sustainability .sustainability-cta {
+  margin: 0;
+}
+
+.sustainability .sustainability-button {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 2px solid #1a1a1a !important;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: var(--body-font-size-s, 15px);
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+}
+
+.sustainability .sustainability-button:hover,
+.sustainability .sustainability-button:focus {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+/* ---- Desktop: text left / image right ---- */
+
+@media (min-width: 900px) {
+  .sustainability.block {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+    padding: 64px 40px;
+  }
+
+  .sustainability .sustainability-image {
+    order: 0;
+    max-width: 480px;
+    flex: 0 0 auto;
+  }
+
+  .sustainability .sustainability-content {
+    flex: 0 0 auto;
+    max-width: 440px;
+  }
+
+  .sustainability .sustainability-heading {
+    font-size: var(--heading-font-size-xl, 40px);
+  }
+
+}
