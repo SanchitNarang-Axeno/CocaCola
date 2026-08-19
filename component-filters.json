@@ -19,7 +19,8 @@
       "content-cards",
       "carousel",
       "brands",
-      "promo-card"
+      "promo-card",
+      "heading"
     ]
   },
   {
@@ -59,6 +60,12 @@
     "id": "content-cards",
     "components": [
       "content-card"
+    ]
+  },
+  {
+    "id": "section-filter",
+    "components": [
+      "heading"
     ]
   },
   {
