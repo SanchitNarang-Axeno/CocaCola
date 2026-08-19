@@ -10,9 +10,8 @@
 .heading h6 {
   margin: 0;
   font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-  font-size: 38px;
   font-weight: 700;
-  line-height: 36px;
+  line-height: 40px;
   padding: 14px;
   margin-top: 53px;
   letter-spacing: -1.5px;
@@ -20,6 +19,12 @@
   display: block;
   direction: ltr;
 }
+.heading h1 { font-size: 45px }
+.heading h2 { font-size: 32px; }
+.heading h3 { font-size: 27px; }
+.heading h4 { font-size: 24px; }
+.heading h5 { font-size: 22px; }
+.heading h6 { font-size: 20px; }
 
 .heading-left {
   text-align: left;
