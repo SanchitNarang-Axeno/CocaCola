@@ -10,44 +10,43 @@ export default function decorate(block) {
   grid.className = 'brands-grid';
 
   items.forEach((item) => {
-    // Identify Brand using AEM Universal Editor metadata
-    const isBrand = item.dataset.aueComponent === 'brand';
+    const image = item.querySelector('img');
 
-    if (isBrand) {
+    // Brand card
+    if (image) {
       item.classList.add('brand-card');
 
-      const image = item.querySelector('img');
-      const linkField = item.querySelector('[data-aue-prop="imageLink"]');
+      image.classList.add('brand-logo');
 
-      if (image) {
-        image.classList.add('brand-logo');
+      const picture = image.closest('picture');
+
+      // Get URL from the authored link
+      const linkField = item.querySelector('p a');
+
+      if (picture && linkField) {
+        const href = linkField.href;
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.className = 'brand-card-link';
+
+        // Replace picture wrapper with link
+        picture.parentElement.replaceWith(link);
+
+        // Put picture inside link
+        link.appendChild(picture);
       }
 
-      // Make the brand image clickable
-      if (image && linkField) {
-        const href = linkField.textContent.trim();
+      // Remove URL text/container
+      const urlContainer = item.querySelector('p');
 
-        if (href) {
-          const link = document.createElement('a');
-
-          link.href = href;
-          link.className = 'brand-card-link';
-
-          const picture = image.closest('picture');
-
-          if (picture) {
-            picture.parentElement.insertBefore(link, picture);
-            link.appendChild(picture);
-          }
-        }
-
-        // Do not display the authored URL/text
-        linkField.remove();
+      if (urlContainer) {
+        urlContainer.parentElement.remove();
       }
 
       grid.appendChild(item);
     } else {
-      // Treat non-brand content as the heading
+      // Heading
       if (!titleWrapper.children.length) {
         titleWrapper.appendChild(item);
       }
