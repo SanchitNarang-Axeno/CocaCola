@@ -1,32 +1,5 @@
-import { getMetadata, createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
-
-/**
- * Fetches the raw markup of the footer content page. Unlike the shared
- * `loadFragment` helper, this does not run block/section decoration on the
- * result: the authored `.footer` block inside it would otherwise be
- * decorated (and thus loaded) a second time, recursively.
- * @param {string} path The path to the footer content page
- * @returns {Element} The `.footer` block found in that page, if any
- */
-async function loadFooterContent(path) {
-  const cleanPath = path.replace(/\.plain\.html$/, '');
-  const resp = await fetch(`${cleanPath}.plain.html`);
-  if (!resp.ok) return null;
-  const main = document.createElement('main');
-  main.innerHTML = await resp.text();
-
-  // reset base path for media to the footer page's base, like loadFragment does
-  const base = new URL(cleanPath, window.location);
-  main.querySelectorAll('img[src^="./media_"]').forEach((img) => {
-    img.src = new URL(img.getAttribute('src'), base).href;
-  });
-  main.querySelectorAll('source[srcset^="./media_"]').forEach((source) => {
-    source.srcset = new URL(source.getAttribute('srcset'), base).href;
-  });
-
-  return main.querySelector('.footer');
-}
 
 // media query match that indicates desktop width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -49,30 +22,30 @@ function toggleColumn(button, expanded) {
 }
 
 /**
- * Builds one accordion column from an authored `footer-column` row.
+ * Builds one accordion column from an authored `coca-cola-footer-column` row.
  * Row fields (in model order): heading, links.
  * @param {Element} row The authored row
  * @param {Number} i The column index, used for a unique id
- * @returns {Element} The decorated `.footer-column`
+ * @returns {Element} The decorated `.coca-cola-footer-column`
  */
 function buildColumn(row, i) {
   const [headingDiv, linksDiv] = row.children;
 
   const column = document.createElement('div');
-  column.className = 'footer-column';
+  column.className = 'coca-cola-footer-column';
   moveInstrumentation(row, column);
 
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = 'footer-column-toggle';
+  button.className = 'coca-cola-footer-column-toggle';
   button.innerHTML = headingDiv?.innerHTML || '';
   moveInstrumentation(headingDiv, button);
 
   const list = linksDiv?.querySelector('ul') || document.createElement('ul');
   moveInstrumentation(linksDiv, list);
-  const listId = `footer-column-${i}`;
+  const listId = `coca-cola-footer-column-${i}`;
   list.id = listId;
-  list.classList.add('footer-column-list');
+  list.classList.add('coca-cola-footer-column-list');
   button.setAttribute('aria-controls', listId);
 
   button.addEventListener('click', () => {
@@ -86,7 +59,7 @@ function buildColumn(row, i) {
 }
 
 /**
- * Builds one social icon link from an authored `footer-social-link` row.
+ * Builds one social icon link from an authored `coca-cola-footer-social-link` row.
  * Row fields (in model order): platform, link.
  * @param {Element} row The authored row
  * @returns {Element} The decorated `<a>`
@@ -113,20 +86,13 @@ function buildSocialLink(row) {
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
-export default async function decorate(block) {
-  // load the authored footer block from the footer content page
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const authored = await loadFooterContent(footerPath);
-
-  block.textContent = '';
-  if (!authored) return;
-
-  const rows = [...authored.children];
+export default function decorate(block) {
+  const rows = [...block.children];
   // Block-level fields (logo, logoLink, copyright) each render as a single-cell row, in
   // that order; empty optional fields are omitted entirely rather than left blank, so
-  // position alone can't identify them. Item rows (footer-column, footer-social-link)
-  // always have two cells, which is what separates them from the block-level rows.
+  // position alone can't identify them. Item rows (coca-cola-footer-column,
+  // coca-cola-footer-social-link) always have two cells, which is what separates them
+  // from the block-level rows.
   const itemStart = rows.findIndex((row) => row.children.length > 1);
   const blockRows = itemStart === -1 ? rows : rows.slice(0, itemStart);
   const itemRows = itemStart === -1 ? [] : rows.slice(itemStart);
@@ -142,7 +108,7 @@ export default async function decorate(block) {
     const picture = createOptimizedPicture(logoImg.src, logoImg.alt || 'The Coca-Cola Company', true);
     moveInstrumentation(logoImg, picture.querySelector('img'));
     const brand = document.createElement('p');
-    brand.className = 'footer-brand';
+    brand.className = 'coca-cola-footer-brand';
     const href = logoLinkDiv?.querySelector('a')?.href;
     if (href) {
       const link = document.createElement('a');
@@ -158,10 +124,10 @@ export default async function decorate(block) {
   footer.append(document.createElement('hr'));
 
   const columns = document.createElement('div');
-  columns.className = 'footer-columns';
+  columns.className = 'coca-cola-footer-columns';
 
   const socialLinks = document.createElement('p');
-  socialLinks.className = 'footer-social-links';
+  socialLinks.className = 'coca-cola-footer-social-links';
 
   let columnIndex = 0;
   itemRows.forEach((row) => {
@@ -182,12 +148,13 @@ export default async function decorate(block) {
   const copyrightCell = copyrightDiv?.firstElementChild;
   if (copyrightCell?.textContent.trim()) {
     const copyright = document.createElement('p');
-    copyright.className = 'footer-copyright';
+    copyright.className = 'coca-cola-footer-copyright';
     moveInstrumentation(copyrightDiv, copyright);
     copyright.append(...copyrightCell.childNodes);
     footer.append(copyright);
   }
 
   decorateIcons(footer);
+  block.textContent = '';
   block.append(footer);
 }

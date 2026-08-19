@@ -1,49 +1,49 @@
-coca-cola-footer {
+.coca-cola-footer {
   background-color: #000;
   color: #fff;
   font-size: var(--body-font-size-xs);
 }
 
-coca-cola-footer .coca-cola-footer > div {
+.coca-cola-footer > div {
   margin: auto;
   max-width: 1200px;
   padding: 32px 24px 24px;
 }
 
-coca-cola-footer .coca-cola-footer p {
+.coca-cola-footer p {
   margin: 0;
 }
 
-coca-cola-footer .coca-cola-footer a:any-link {
+.coca-cola-footer a:any-link {
   color: #fff;
 }
 
-coca-cola-footer .coca-cola-footer a:hover,
-coca-cola-footer .coca-cola-footer a:focus-visible {
+.coca-cola-footer a:hover,
+.coca-cola-footer a:focus-visible {
   color: #fff;
   text-decoration: underline;
 }
 
-coca-cola-footer .coca-cola-footer hr {
+.coca-cola-footer hr {
   margin: 24px 0;
   border: 0;
   border-top: 1px solid rgb(255 255 255 / 30%);
 }
 
 /* brand */
-coca-cola-footer .coca-cola-footer .coca-cola-footer-brand img {
+.coca-cola-footer .coca-cola-footer-brand img {
   height: 24px;
   width: auto;
 }
 
 /* social links */
-coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links {
+.coca-cola-footer .coca-cola-footer-social-links {
   display: flex;
   gap: 12px;
   margin-top: 24px;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links .icon {
+.coca-cola-footer .coca-cola-footer-social-links .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,31 +53,31 @@ coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links .icon {
   border-radius: 50%;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links .icon img {
+.coca-cola-footer .coca-cola-footer-social-links .icon img {
   width: 16px;
   height: 16px;
   filter: invert(1);
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links a {
+.coca-cola-footer .coca-cola-footer-social-links a {
   display: inline-flex;
 }
 
 /* columns / accordion */
-coca-cola-footer .coca-cola-footer .coca-cola-footer-columns {
+.coca-cola-footer .coca-cola-footer-columns {
   display: flex;
   flex-direction: column;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column {
+.coca-cola-footer .coca-cola-footer-column {
   border-bottom: 1px solid rgb(255 255 255 / 30%);
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column:last-child {
+.coca-cola-footer .coca-cola-footer-column:last-child {
   border-bottom: 0;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle {
+.coca-cola-footer .coca-cola-footer-column-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -94,7 +94,7 @@ coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle {
   cursor: pointer;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle::after {
+.coca-cola-footer .coca-cola-footer-column-toggle::after {
   content: '';
   flex-shrink: 0;
   width: 10px;
@@ -106,11 +106,11 @@ coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle::after {
   transition: transform 0.2s ease;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle[aria-expanded='true']::after {
+.coca-cola-footer .coca-cola-footer-column-toggle[aria-expanded='true']::after {
   transform: rotate(-135deg);
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column-list {
+.coca-cola-footer .coca-cola-footer-column-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -119,42 +119,42 @@ coca-cola-footer .coca-cola-footer .coca-cola-footer-column-list {
   transition: height 0.3s ease;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column li {
+.coca-cola-footer .coca-cola-footer-column li {
   padding: 8px 0;
   font-weight: 700;
 }
 
-coca-cola-footer .coca-cola-footer .coca-cola-footer-column-list > li:last-child {
+.coca-cola-footer .coca-cola-footer-column-list > li:last-child {
   padding-bottom: 16px;
 }
 
 /* copyright */
-coca-cola-footer .coca-cola-footer .coca-cola-footer-copyright {
+.coca-cola-footer .coca-cola-footer-copyright {
   font-size: var(--body-font-size-xs);
   text-align: right;
 }
 
 @media (width >= 900px) {
-  coca-cola-footer .coca-cola-footer > div {
+  .coca-cola-footer > div {
     padding: 40px 32px 24px;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-brand img {
+  .coca-cola-footer .coca-cola-footer-brand img {
     height: 28px;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-columns {
+  .coca-cola-footer .coca-cola-footer-columns {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
     column-gap: 32px;
     align-items: start;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-column {
+  .coca-cola-footer .coca-cola-footer-column {
     border-bottom: 0;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle {
+  .coca-cola-footer .coca-cola-footer-column-toggle {
     padding: 0 0 16px;
     font-size: var(--body-font-size-xs);
     letter-spacing: 0.08em;
@@ -163,21 +163,21 @@ coca-cola-footer .coca-cola-footer .coca-cola-footer-copyright {
     pointer-events: none;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-column-toggle::after {
+  .coca-cola-footer .coca-cola-footer-column-toggle::after {
     display: none;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-column-list {
+  .coca-cola-footer .coca-cola-footer-column-list {
     overflow: visible;
     height: auto !important;
     transition: none;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-column-list > li:last-child {
+  .coca-cola-footer .coca-cola-footer-column-list > li:last-child {
     padding-bottom: 0;
   }
 
-  coca-cola-footer .coca-cola-footer .coca-cola-footer-social-links {
+  .coca-cola-footer .coca-cola-footer-social-links {
     grid-column: 4;
     grid-row: 1;
     margin-top: 0;
