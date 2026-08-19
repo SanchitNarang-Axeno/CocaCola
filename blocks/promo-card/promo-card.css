@@ -81,7 +81,6 @@ margin-top: 15px;
   box-sizing: border-box;
 
   padding: 68px 55px 62px;
-  padding: 68px 55px 62px;
   margin-bottom: 248px;
   background: #fff;
   border-radius: 12px;
@@ -159,12 +158,12 @@ margin-top: 15px;
 .promo-card.block .promo-card-title {
   margin: 0 0 10px;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 33.5px;
   font-weight: 700;
 
-  line-height: 400;
-  letter-spacing: 1.5px;
+  line-height: 1;
+  letter-spacing: 1px;
 
   color: #050505;
 }
@@ -205,14 +204,13 @@ margin-top: 15px;
 
 .promo-card.block .promo-card-description p {
   margin: 0 0 10px;
-
-      font-size: 18px;
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+    font-size: 18px;
     letter-spacing: 0.4px;
 }
 
 .promo-card.block .promo-card-description p:last-child {
   margin-bottom: 0;
-  line-height: 1.6;
 }
 
 
@@ -241,11 +239,11 @@ margin-top: 15px;
   background: #fff;
   color: #111;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 18px;
   font-weight: 600;
 
-  letter-spacing: 0.2px;
+  letter-spacing: 0.7px;
   line-height: 1.2;
 
   text-decoration: none;
@@ -357,7 +355,6 @@ margin-top: 15px;
   color: #fff;
 
   font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 13px;
   font-weight: 600;
 
@@ -459,7 +456,6 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-title {
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 28px;
   }
 
@@ -468,7 +464,6 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-subtitle {
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 18px;
   }
 
@@ -476,7 +471,6 @@ margin-top: 15px;
   /* DESCRIPTION */
 
   .promo-card.block .promo-card-description {
-    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 17px;
   }
@@ -673,7 +667,6 @@ margin-top: 15px;
   .promo-card.block .promo-card-subtitle {
     margin-bottom: 12px;
 font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 16px;
 
     line-height: 1.4;
@@ -687,7 +680,6 @@ font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   .promo-card.block .promo-card-description {
     max-width: none;
 font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 15px;
 
     line-height: 1.4;
@@ -695,7 +687,7 @@ font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
 
   .promo-card.block .promo-card-description p {
     margin-bottom: 10px;
-    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 15px;
   }
 
