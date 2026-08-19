@@ -10,56 +10,50 @@ export default function decorate(block) {
   grid.className = 'brands-grid';
 
   items.forEach((item) => {
-    const isBrand = item.dataset.aueComponent === 'brand';
+    const image = item.querySelector('img');
 
-    if (!isBrand) {
+    // Brand card
+    if (image) {
+      item.classList.add('brand-card');
+
+      image.classList.add('brand-logo');
+
+      const picture = image.closest('picture');
+
+      // Get URL from the authored link
+      const linkField = item.querySelector('p a');
+
+      if (picture && linkField) {
+        const href = linkField.href;
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.className = 'brand-card-link';
+
+        // Replace picture wrapper with link
+        picture.parentElement.replaceWith(link);
+
+        // Put picture inside link
+        link.appendChild(picture);
+      }
+
+      // Remove URL text/container
+      const urlContainer = item.querySelector('p');
+
+      if (urlContainer) {
+        urlContainer.parentElement.remove();
+      }
+
+      grid.appendChild(item);
+    } else {
+      // Heading
       if (!titleWrapper.children.length) {
         titleWrapper.appendChild(item);
       }
-      return;
     }
-
-    item.classList.add('brand-card');
-
-    const image = item.querySelector('img');
-    const picture = image?.closest('picture');
-
-    if (!image || !picture) {
-      grid.appendChild(item);
-      return;
-    }
-
-    image.classList.add('brand-logo');
-
-    // Find any authored URL
-    const authoredLink = item.querySelector('a[href]');
-
-    const href = authoredLink?.getAttribute('href')?.trim();
-
-    // Create a clean wrapper
-    const contentWrapper = document.createElement('div');
-
-    if (href) {
-      const link = document.createElement('a');
-
-      link.href = href;
-      link.className = 'brand-card-link';
-
-      link.appendChild(picture);
-      contentWrapper.appendChild(link);
-    } else {
-      contentWrapper.appendChild(picture);
-    }
-
-    // Remove everything currently inside the card
-    item.innerHTML = '';
-
-    // Add only our clean structure
-    item.appendChild(contentWrapper);
-
-    grid.appendChild(item);
   });
 
+  // Rebuild block
   block.innerHTML = '';
 
   if (titleWrapper.children.length) {
