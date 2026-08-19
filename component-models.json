@@ -142,6 +142,25 @@
     ]
   },
   {
+    "id": "brand",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "aem-content",
+        "name": "imageLink",
+        "value": "",
+        "label": "Image Link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -361,6 +380,79 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "promo-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Subtitle"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Promo Variant",
+        "valueType": "string",
+        "value": "left-img",
+        "options": [
+          {
+            "name": "Left image",
+            "value": "left-img"
+          },
+          {
+            "name": "Right image",
+            "value": "right-img"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "ctaLabel",
+        "label": "CTA Label"
+      },
+      {
+        "component": "aem-content",
+        "name": "ctaLink",
+        "value": "",
+        "label": "CTA Link",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mainCtaLabel",
+        "label": "Main CTA Label"
+      },
+      {
+        "component": "aem-content",
+        "name": "mainCtaLink",
+        "value": "",
+        "label": "Main CTA Link",
         "valueType": "string"
       }
     ]
