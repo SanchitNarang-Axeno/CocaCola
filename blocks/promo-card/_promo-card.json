@@ -53,11 +53,11 @@
           "value": "left-img",
           "options": [
             {
-              "name": "Left image",
+              "name": "Left Card",
               "value": "left-img"
             },
             {
-              "name": "Right image",
+              "name": "Right Card",
               "value": "right-img"
             }
           ]
