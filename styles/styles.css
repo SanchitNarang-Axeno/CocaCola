@@ -206,6 +206,9 @@ button.button.primary {
   border-color: var(--text-color);
   background-color: var(--text-color);
   color: var(--background-color);
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
   width: 325px;
   height: 38px;
 }
@@ -235,6 +238,9 @@ button.button.secondary {
   border-color: var(--text-color);
   background-color: transparent;
   color: var(--text-color);
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
   width: 325px;
   height: 38px;
 }
