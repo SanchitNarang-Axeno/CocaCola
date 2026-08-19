@@ -97,8 +97,7 @@ export default function decorate(block) {
   const title = getText(titleRow);
   const subtitle = getText(subtitleRow);
 
-  const descriptionHtml =
-    descriptionRow?.innerHTML?.trim() || '';
+  const descriptionHtml = descriptionRow?.innerHTML?.trim() || '';
 
   /* -------------------------------------------------------------
      Get variant
@@ -118,9 +117,6 @@ export default function decorate(block) {
   const variant = variantValue.includes('right')
     ? 'right-img'
     : 'left-img';
-
-  console.log('Authored variant:', variantValue);
-  console.log('Final variant:', variant);
 
   const ctaLabel = getText(ctaLabelRow);
   const ctaLink = getLink(ctaLinkRow);
