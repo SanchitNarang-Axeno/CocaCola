@@ -23,6 +23,7 @@
   text-align: center;
   letter-spacing: -1.5px;
   margin: 0px;
+  margin-top: 40px;
 }
 
 .carousel-container .carousel-wrapper {
@@ -47,14 +48,14 @@
 }
 
 .splide .splide__pagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
-    padding: 0px;
-    background-color: transparent;
-    pointer-events: all;
-    bottom: unset !important;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 0px;
+  background-color: transparent;
+  pointer-events: all;
+  bottom: unset !important;
 }
 
 .splide__pagination li {
@@ -66,27 +67,28 @@
 }
 
 .splide .splide__pagination .splide__pagination__page {
-    cursor: pointer;
-    width: 8px;
-    height: 8px;
-    padding: 0px;
-    border: none;
-    border-radius: 8000px;
-    background: #6c6c6c;
-    transition: width .2s ease-in-out;
-    margin: 0 !important;
-    outline-color: #000000;
-    transform: none !important;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  padding: 0px;
+  border: none;
+  border-radius: 8000px;
+  background: #6c6c6c;
+  transition: width .2s ease-in-out;
+  margin: 0 !important;
+  outline-color: #000000;
+  transform: none !important;
+  opacity: 1;
 }
 
 .splide .splide__pagination .splide__pagination__page:focus-visible {
-    outline: 2px solid #000000;
-    outline-offset: 2px;
+  outline: 2px solid #000000;
+  outline-offset: 2px;
 }
 
 .splide .splide__pagination .splide__pagination__page.is-active {
-    width: 32px;
-    background: #000000 !important;
+  width: 32px;
+  background: #000000 !important;
 }
 
 .carousel-container .splide__slide .teaser {
@@ -106,7 +108,7 @@
   height: 100%;
   padding: 24px;
   text-align: center;
-  color: #ffffff;
+  color: var(--background-color);
   box-sizing: border-box;
 }
 
@@ -140,7 +142,7 @@
 
 .teaser .cmp-teaser__description > *,
 .teaser .cmp-teaser__pretitle + .cmp-teaser__title {
-  margin-top: 8px;
+  margin-top: 8px !important;
 }
 
 .teaser .cmp-teaser__description {
@@ -174,13 +176,13 @@
   min-height: 40px;
   width: 100%;
   border: none;
-  background-color: #ffffff;
+  background-color: var(--background-color);
   color: #000000;
   box-sizing: border-box;
 }
 
 .teaser .cmp-teaser__action-link:hover {
-  background-color: #eeeeee;
+  background-color: var(--color-neutral-opaque-subtle);
   color: #000000;
 }
 
@@ -228,6 +230,7 @@
 @media only screen and (min-width: 1200px) {
   .carousel-container h1 {
     font-size: 38px;
+    margin-top: 56px !important;
   }
 
   .carousel-container .splide__track {
@@ -287,15 +290,3 @@
     background: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.56) 100%);
   }
 }
-
-/*
-.teaser .cmp-teaser__action-link:nth-child(1):focus-visible {
-  border-radius: 8000px;
-  outline: 2px solid;
-  outline-offset: 2px;
-  outline-color: #ffffff;
-}
-.teaser .cmp-teaser__action-link:nth-child(1):focus:not(:focus-visible) {
-  outline: 0;
-}
-*/

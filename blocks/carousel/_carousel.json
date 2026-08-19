@@ -51,6 +51,13 @@
         },
         {
           "component": "text",
+          "valueType": "string",
+          "name": "desktopImageAlt",
+          "label": "Image Alt",
+          "value": ""
+        },
+        {
+          "component": "text",
           "name": "preTitle",
           "value": "",
           "label": "Pre-Title",
