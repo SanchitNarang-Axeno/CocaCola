@@ -175,8 +175,8 @@ main > .section:has(.promo-card) > div {
 
 .promo-card.block .promo-card-description p {
   margin: 0 0 10px;
-  font-size: 18px;
-  letter-spacing: 0.4px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
 }
 
 .promo-card.block .promo-card-description p:last-child {
