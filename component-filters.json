@@ -18,6 +18,7 @@
       "fragment",
       "content-cards",
       "carousel",
+      "sustainability",
       "footer"
     ]
   },
@@ -78,5 +79,9 @@
     "components": [
       "promo-card"
     ]
+  },
+  {
+    "id": "sustainability",
+    "components": ["sustainability"]
   }
 ]
