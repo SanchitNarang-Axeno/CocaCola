@@ -1,0 +1,731 @@
+/* ================================================================
+   PROMO CARD
+   ================================================================ */
+
+main > .section:has(.promo-card) > div {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.promo-card.block {
+  position: relative;
+  width: 100%;
+  background: #f1f1f1;
+  padding: 18px 0 40px;
+  height: 617px;
+  overflow: hidden;
+}
+
+
+/* ================================================================
+   CARD CONTAINER
+   ================================================================ */
+
+.promo-card.block .promo-card-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42% 58%;
+  align-items: center;
+  width: min(1120px, calc(100% - 50px));
+  min-height: 450px;
+  margin: 0 auto;
+}
+
+
+/* ================================================================
+   IMAGE
+   ================================================================ */
+
+.promo-card.block .promo-card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 13px;
+  z-index: 1;
+}
+
+.promo-card.block .promo-card-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.promo-card.block .promo-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* margin-top:74px ; */
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem;
+}
+
+.promo-card.block.right-img .promo-card-image img{
+margin-top: 15px;
+}
+
+/* ================================================================
+   CONTENT CARD
+   ================================================================ */
+
+.promo-card.block .promo-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+
+  width: calc(97% + 50px);
+  min-height: 400px;
+
+  box-sizing: border-box;
+
+  padding: 68px 65px 62px;
+  margin-bottom: 248px;
+  background: #fff;
+  border-radius: 12px;
+
+  box-shadow: 0 12px 25px rgb(0 0 0 / 8%);
+}
+
+
+/* ================================================================
+   LEFT IMAGE VARIANT
+   Text LEFT + Image RIGHT
+   ================================================================ */
+
+.promo-card.block.left-img .promo-card-content {
+  grid-column: 1;
+  order: 1;
+  margin-right: -35px;
+  width: calc(100% + 74px);
+  min-height: 549px;
+}
+
+.promo-card.block.left-img .promo-card-image {
+  grid-column: 2;
+  order: 2;
+  /* margin-top: 7.9rem; */
+  width: 100%;
+  height: 600px;
+  margin-top: -45px;
+  transform: translateX(8px);
+}
+
+
+/* ================================================================
+   RIGHT IMAGE VARIANT
+   Image LEFT + Text RIGHT
+   ================================================================ */
+
+.promo-card.block.right-img .promo-card-inner {
+  display: grid;
+  grid-template-columns: 57% 46%;
+  align-items: center;
+}
+
+
+.promo-card.block.right-img .promo-card-image {
+  grid-column: 1;
+  order: 1;
+
+  width: 100%;
+  height: 100%;
+
+  margin-top: 7.9rem;
+
+  z-index: 1;
+}
+
+.promo-card.block.right-img .promo-card-content {
+  grid-column: 2;
+  order: 2;
+
+  height: 543px;
+
+  margin-left: -55px;
+ margin-bottom: 298px;
+  transform: translateX(-10px);
+
+  z-index: 2;
+}
+
+
+/* ================================================================
+   TITLE
+   ================================================================ */
+
+.promo-card.block .promo-card-title {
+  margin: 0 0 10px;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 33.5px;
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: 1px;
+
+  color: #050505;
+}
+
+
+/* ================================================================
+   SUBTITLE
+   ================================================================ */
+
+.promo-card.block .promo-card-subtitle {
+  margin: 0 0 12px;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #111;
+}
+
+
+/* ================================================================
+   DESCRIPTION
+   ================================================================ */
+
+.promo-card.block .promo-card-description {
+  max-width: 400px;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: #111;
+}
+
+.promo-card.block .promo-card-description p {
+  margin: 0 0 10px;
+
+      font-size: 18px;
+    letter-spacing: 0.4px;
+}
+
+.promo-card.block .promo-card-description p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ================================================================
+   CARD CTA
+   ================================================================ */
+
+.promo-card.block .promo-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: fit-content;
+  min-width: 319px;
+
+  margin-top: 16.5rem;
+ 
+  padding: 8px 22px;
+
+  box-sizing: border-box;
+
+  border: 2px solid #111;
+  border-radius: 30px;
+
+  background: #fff;
+  color: #111;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+
+  letter-spacing: 0.7px;
+  line-height: 1.2;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+.promo-card.block.right-img .promo-card-cta{
+    margin-top: 12.5rem;
+   }
+
+.promo-card.block .promo-card-cta:hover,
+.promo-card.block .promo-card-cta:focus-visible {
+  background: #111;
+  color: #fff;
+}
+
+
+/* ================================================================
+   ARROW
+   ================================================================ */
+
+.promo-card.block .arrow-wrapper {
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+.promo-card.block .arrow {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 18px;
+  height: 18px;
+
+  transition: transform 0.35s ease;
+}
+
+.promo-card.block .arrow-current {
+  transform: translateX(0);
+}
+
+.promo-card.block .arrow-next {
+  transform: translateX(-22px);
+}
+
+
+/* ================================================================
+   ARROW HOVER
+   ================================================================ */
+
+.promo-card.block .promo-card-cta:hover .arrow-current,
+.promo-card.block .promo-card-cta:focus-visible .arrow-current,
+.promo-card.block .promo-main-cta:hover .arrow-current,
+.promo-card.block .promo-main-cta:focus-visible .arrow-current {
+  transform: translateX(22px);
+}
+
+.promo-card.block .promo-card-cta:hover .arrow-next,
+.promo-card.block .promo-card-cta:focus-visible .arrow-next,
+.promo-card.block .promo-main-cta:hover .arrow-next,
+.promo-card.block .promo-main-cta:focus-visible .arrow-next {
+  transform: translateX(0);
+}
+
+
+/* ================================================================
+   MAIN CTA
+   Optional CTA BELOW THE PROMO CARD
+   ================================================================ */
+
+.promo-card.block .promo-main-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 24px;
+}
+
+.promo-card.block .promo-main-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 236px;
+
+  padding: 7px 17px;
+
+  box-sizing: border-box;
+
+  border: 0;
+  border-radius: 30px;
+
+  background: #000;
+  color: #fff;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.promo-card.block .promo-main-cta:hover,
+.promo-card.block .promo-main-cta:focus-visible {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+
+/* ================================================================
+   TABLET
+   ================================================================ */
+
+@media (max-width: 900px) {
+
+  .promo-card.block {
+    padding: 30px 0 40px;
+  }
+
+  .promo-card.block .promo-card-inner {
+       position: relative;
+    display: grid;
+    grid-template-columns: 42% 59%;
+    align-items: center;
+    width: min(1120px, calc(100% - 50px));
+    min-height: 450px;
+    margin: 0 auto;
+  }
+
+
+  /* IMAGE */
+
+  .promo-card.block .promo-card-image {
+    order: 1 !important;
+
+    width: 100%;
+    height: 360px;
+
+    margin: 0 !important;
+
+    border-radius: 16px;
+  }
+
+
+  /* CONTENT */
+
+  .promo-card.block .promo-card-content {
+    order: 2 !important;
+
+    width: calc(100% + 40px);
+
+    min-height: 360px;
+
+    margin: -40px 0 0 -40px !important;
+
+    padding: 35px 28px;
+
+    border-radius: 16px;
+  }
+
+
+  /* BOTH VARIANTS */
+
+  .promo-card.block.left-img .promo-card-image,
+  .promo-card.block.right-img .promo-card-image {
+    grid-column: 1;
+
+    order: 1 !important;
+
+    margin: 0 !important;
+  }
+
+  .promo-card.block.left-img .promo-card-content,
+  .promo-card.block.right-img .promo-card-content {
+    grid-column: 1 / -1;
+
+    order: 2 !important;
+
+    transform: none;
+
+    height: auto;
+
+    margin: 2px 0 0 !important;
+  }
+
+
+  /* TITLE */
+
+  .promo-card.block .promo-card-title {
+    font-size: 28px;
+  }
+
+
+  /* SUBTITLE */
+
+  .promo-card.block .promo-card-subtitle {
+    font-size: 18px;
+  }
+
+
+  /* DESCRIPTION */
+
+  .promo-card.block .promo-card-description {
+    font-size: 17px;
+  }
+
+
+  /* CARD CTA */
+
+  .promo-card.block .promo-card-cta {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* MAIN CTA */
+
+  .promo-card.block .promo-main-cta-wrapper {
+    margin-top: 25px;
+  }
+
+  .promo-card.block .promo-main-cta {
+    min-width: 280px;
+    max-width: calc(100% - 32px);
+  }
+}
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+
+  /* --------------------------------------------------------------
+     PROMO CARD
+     -------------------------------------------------------------- */
+
+  .promo-card.block {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+ .promo-card.block.right-img .promo-card-cta {
+    margin-top: 2rem;
+  }
+
+  /* --------------------------------------------------------------
+     CARD INNER
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-inner,
+  .promo-card.block.left-img .promo-card-inner,
+  .promo-card.block.right-img .promo-card-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    position: relative;
+  }
+
+
+  /* --------------------------------------------------------------
+     CONTENT CARD
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-content {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 326px !important;
+    min-height: 0 !important;
+    height: auto !important;
+
+    margin: 0 auto !important;
+
+    padding: 28px 20px 24px !important;
+
+    box-sizing: border-box;
+
+    background: #fff;
+
+    border-radius: 17px;
+
+    box-shadow: 0 8px 25px rgb(0 0 0 / 10%);
+
+    transform: none !important;
+  }
+
+
+  /* --------------------------------------------------------------
+     LEFT IMAGE VARIANT
+     Card FIRST → Image SECOND
+     -------------------------------------------------------------- */
+
+  .promo-card.block.left-img .promo-card-content {
+    order: 1 !important;
+  }
+
+  .promo-card.block.left-img .promo-card-image {
+    order: 2 !important;
+  }
+
+
+  /* --------------------------------------------------------------
+     RIGHT IMAGE VARIANT
+     Image FIRST → Card SECOND
+     -------------------------------------------------------------- */
+
+  .promo-card.block.right-img .promo-card-image {
+    order: 1 !important;
+  }
+
+  .promo-card.block.right-img .promo-card-content {
+    order: 2 !important;
+  }
+
+
+  /* --------------------------------------------------------------
+     IMAGE
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-image,
+  .promo-card.block.left-img .promo-card-image,
+  .promo-card.block.right-img .promo-card-image {
+    width: 100% !important;
+
+    height: auto !important;
+
+    min-height: 0 !important;
+
+    margin: -74px 0 0 !important;
+
+    padding: 0 !important;
+
+    transform: none !important;
+
+    border-radius: 0 !important;
+
+    overflow: hidden;
+
+    position: relative;
+
+    z-index: 1;
+  }
+
+  .promo-card.block .promo-card-image picture,
+  .promo-card.block.left-img .promo-card-image picture,
+  .promo-card.block.right-img .promo-card-image picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .promo-card.block .promo-card-image img,
+  .promo-card.block.left-img .promo-card-image img,
+  .promo-card.block.right-img .promo-card-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+
+  /* --------------------------------------------------------------
+     TITLE
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-title {
+    margin: 0 0 10px;
+
+    font-size: 33px;
+
+    line-height: 1.05;
+
+    letter-spacing: 0;
+  }
+
+
+  /* --------------------------------------------------------------
+     SUBTITLE
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-subtitle {
+    margin-bottom: 12px;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+  }
+
+
+  /* --------------------------------------------------------------
+     DESCRIPTION
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-description {
+    max-width: none;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+  }
+
+  .promo-card.block .promo-card-description p {
+    margin-bottom: 10px;
+
+    font-size: 18px;
+  }
+
+
+  /* --------------------------------------------------------------
+     CARD CTA
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-card-cta {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-top: 32px;
+
+    padding: 8px 17px;
+
+    font-size: 19px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* --------------------------------------------------------------
+     MAIN CTA
+     -------------------------------------------------------------- */
+
+  .promo-card.block .promo-main-cta-wrapper {
+    width: 100%;
+
+    margin-top: 16px;
+
+    padding: 0 16px;
+
+    box-sizing: border-box;
+  }
+
+  .promo-card.block .promo-main-cta {
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+  }
+  .promo-card.block.right-img .promo-card-image {
+    margin: 2px 0 0 !important;
+    /* padding-bottom: 22px; */
+  }
+  .promo-card.block.right-img .promo-card-content {
+    margin-top: -92px !important;
+  }
+  
+}
