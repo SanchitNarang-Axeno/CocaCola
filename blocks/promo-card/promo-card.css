@@ -81,6 +81,7 @@ margin-top: 15px;
   box-sizing: border-box;
 
   padding: 68px 55px 62px;
+  padding: 68px 55px 62px;
   margin-bottom: 248px;
   background: #fff;
   border-radius: 12px;
@@ -158,8 +159,8 @@ margin-top: 15px;
 .promo-card.block .promo-card-title {
   margin: 0 0 10px;
 
-  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-  font-size: 32px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 33.5px;
   font-weight: 700;
 
   line-height: 400;
@@ -204,9 +205,9 @@ margin-top: 15px;
 
 .promo-card.block .promo-card-description p {
   margin: 0 0 10px;
-  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-  font-size: 15.13px;
-  letter-spacing: 0.2px;
+
+      font-size: 18px;
+    letter-spacing: 0.4px;
 }
 
 .promo-card.block .promo-card-description p:last-child {
@@ -240,8 +241,8 @@ margin-top: 15px;
   background: #fff;
   color: #111;
 
-  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
-  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
   font-weight: 600;
 
   letter-spacing: 0.2px;
@@ -260,6 +261,8 @@ margin-top: 15px;
 
 .promo-card.block .promo-card-cta:hover,
 .promo-card.block .promo-card-cta:focus-visible {
+  background: #ececec;
+  color: #111;
   background: #ececec;
   color: #111;
 }
@@ -353,6 +356,7 @@ margin-top: 15px;
   background: #000;
   color: #fff;
 
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -455,6 +459,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-title {
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 28px;
   }
 
@@ -463,6 +468,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-subtitle {
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 18px;
   }
 
@@ -470,6 +476,7 @@ margin-top: 15px;
   /* DESCRIPTION */
 
   .promo-card.block .promo-card-description {
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 17px;
   }
@@ -624,6 +631,10 @@ margin-top: 15px;
     border-radius: 0;
   }
 
+  .promo-card.block .promo-card-image img {
+    border-radius: 0;
+  }
+
   .promo-card.block .promo-card-image picture,
   .promo-card.block.left-img .promo-card-image picture,
   .promo-card.block.right-img .promo-card-image picture {
@@ -662,6 +673,7 @@ margin-top: 15px;
   .promo-card.block .promo-card-subtitle {
     margin-bottom: 12px;
 font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 16px;
 
     line-height: 1.4;
@@ -674,6 +686,7 @@ font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
 
   .promo-card.block .promo-card-description {
     max-width: none;
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
 font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 15px;
 
