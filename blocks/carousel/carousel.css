@@ -1,23 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css");
 
-@font-face {
-  font-family: TCCC-UnityText;
-  src: url('../../fonts/tccc-unitytext-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap
-}
-
-@font-face {
-  font-family: TCCC-UnityText;
-  src: url('../../fonts/tccc-unitytext-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap
-}
-
 .carousel-container h1 {
-  font-family: Noto-regional,Noto-latin,TCCC-UnityText,sans-serif;
+  font-family: var(--cc-font-family);
   font-size: 32px;
   font-weight: 700;
   text-align: center;
@@ -30,7 +14,7 @@
   padding: 0 !important;
   margin: 0 !important;
   max-width: none !important;
-  font-family: Noto-regional,Noto-latin,TCCC-UnityText,sans-serif;
+  font-family: var(--cc-font-family);
 }
 
 .carousel-container .carousel-wrapper .splide__track {

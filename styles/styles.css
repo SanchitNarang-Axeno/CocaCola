@@ -23,6 +23,7 @@
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --cc-font-family: Noto-regional,Noto-latin,TCCC-UnityText,sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -38,7 +39,8 @@
   --heading-font-size-xs: 22px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 80px;
+  --nav-height-s: 72px;
 }
 
 /* fallback fonts */
