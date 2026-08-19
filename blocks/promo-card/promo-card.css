@@ -80,7 +80,7 @@ margin-top: 15px;
 
   box-sizing: border-box;
 
-  padding: 68px 65px 62px;
+  padding: 68px 55px 62px;
   margin-bottom: 248px;
   background: #fff;
   border-radius: 12px;
@@ -158,7 +158,7 @@ margin-top: 15px;
 .promo-card.block .promo-card-title {
   margin: 0 0 10px;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 33.5px;
   font-weight: 700;
 
@@ -176,7 +176,7 @@ margin-top: 15px;
 .promo-card.block .promo-card-subtitle {
   margin: 0 0 12px;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 17px;
   font-weight: 400;
 
@@ -193,7 +193,7 @@ margin-top: 15px;
 .promo-card.block .promo-card-description {
   max-width: 400px;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 16px;
   font-weight: 400;
 
@@ -204,8 +204,8 @@ margin-top: 15px;
 
 .promo-card.block .promo-card-description p {
   margin: 0 0 10px;
-
-      font-size: 18px;
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
+    font-size: 18px;
     letter-spacing: 0.4px;
 }
 
@@ -239,7 +239,7 @@ margin-top: 15px;
   background: #fff;
   color: #111;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 18px;
   font-weight: 600;
 
@@ -259,8 +259,8 @@ margin-top: 15px;
 
 .promo-card.block .promo-card-cta:hover,
 .promo-card.block .promo-card-cta:focus-visible {
-  background: #111;
-  color: #fff;
+  background: #ececec;
+  color: #111;
 }
 
 
@@ -352,7 +352,7 @@ margin-top: 15px;
   background: #000;
   color: #fff;
 
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
   font-size: 13px;
   font-weight: 600;
 
@@ -453,6 +453,7 @@ margin-top: 15px;
   /* TITLE */
 
   .promo-card.block .promo-card-title {
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 28px;
   }
 
@@ -460,6 +461,7 @@ margin-top: 15px;
   /* SUBTITLE */
 
   .promo-card.block .promo-card-subtitle {
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 18px;
   }
 
@@ -467,6 +469,7 @@ margin-top: 15px;
   /* DESCRIPTION */
 
   .promo-card.block .promo-card-description {
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 17px;
   }
 
@@ -506,6 +509,7 @@ margin-top: 15px;
     width: 100%;
     padding: 0;
     margin: 0;
+    height: 580px;
     overflow: visible;
   }
  .promo-card.block.right-img .promo-card-cta {
@@ -615,6 +619,10 @@ margin-top: 15px;
     z-index: 1;
   }
 
+  .promo-card.block .promo-card-image img {
+    border-radius: 0;
+  }
+
   .promo-card.block .promo-card-image picture,
   .promo-card.block.left-img .promo-card-image picture,
   .promo-card.block.right-img .promo-card-image picture {
@@ -639,7 +647,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-title {
     margin: 0 0 10px;
-
+    font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 33px;
 
     line-height: 1.05;
@@ -654,7 +662,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-subtitle {
     margin-bottom: 12px;
-
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 16px;
 
     line-height: 1.4;
@@ -667,7 +675,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-description {
     max-width: none;
-
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 15px;
 
     line-height: 1.4;
@@ -675,7 +683,7 @@ margin-top: 15px;
 
   .promo-card.block .promo-card-description p {
     margin-bottom: 10px;
-
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 18px;
   }
 
@@ -692,7 +700,7 @@ margin-top: 15px;
     margin-top: 32px;
 
     padding: 8px 17px;
-
+font-family: Noto-regional, Noto-latin, TCCC-UnityText, sans-serif;
     font-size: 19px;
 
     box-sizing: border-box;
