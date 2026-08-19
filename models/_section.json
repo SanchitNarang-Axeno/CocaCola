@@ -56,7 +56,8 @@
         "columns",
         "fragment",
         "content-cards",
-        "carousel"
+        "carousel",
+        "footer"
       ]
     }
   ]
