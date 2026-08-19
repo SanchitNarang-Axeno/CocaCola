@@ -168,6 +168,9 @@ a:hover {
 /* buttons */
 p.button-wrapper {
   margin: 12px 0;
+  display: flex;
+  justify-content: center;
+
 }
 
 a.button:any-link,
@@ -202,6 +205,8 @@ button.button.primary {
   border-color: var(--text-color);
   background-color: var(--text-color);
   color: var(--background-color);
+  width: 325px;
+  height: 38px;
 }
 
 a.button.primary:hover,
@@ -229,6 +234,8 @@ button.button.secondary {
   border-color: var(--text-color);
   background-color: transparent;
   color: var(--text-color);
+  width: 325px;
+  height: 38px;
 }
 
 a.button.secondary:hover,
