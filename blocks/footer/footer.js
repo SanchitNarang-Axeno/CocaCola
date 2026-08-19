@@ -123,15 +123,23 @@ export default async function decorate(block) {
   if (!authored) return;
 
   const rows = [...authored.children];
-  // block-level fields come first, in model order: logo, logoAlt, logoLink, copyright
-  const [logoDiv, logoAltDiv, logoLinkDiv, copyrightDiv] = rows;
-  const itemRows = rows.slice(4);
+  // Block-level fields (logo, logoLink, copyright) each render as a single-cell row, in
+  // that order; empty optional fields are omitted entirely rather than left blank, so
+  // position alone can't identify them. Item rows (footer-column, footer-social-link)
+  // always have two cells, which is what separates them from the block-level rows.
+  const itemStart = rows.findIndex((row) => row.children.length > 1);
+  const blockRows = itemStart === -1 ? rows : rows.slice(0, itemStart);
+  const itemRows = itemStart === -1 ? [] : rows.slice(itemStart);
+
+  const logoDiv = blockRows.find((row) => row.querySelector('picture, img'));
+  const logoLinkDiv = blockRows.find((row) => row !== logoDiv && row.querySelector('a'));
+  const copyrightDiv = blockRows.find((row) => row !== logoDiv && row !== logoLinkDiv);
 
   const footer = document.createElement('div');
 
   const logoImg = logoDiv?.querySelector('img');
   if (logoImg) {
-    const picture = createOptimizedPicture(logoImg.src, logoAltDiv?.textContent.trim() || '', true);
+    const picture = createOptimizedPicture(logoImg.src, logoImg.alt || 'The Coca-Cola Company', true);
     moveInstrumentation(logoImg, picture.querySelector('img'));
     const brand = document.createElement('p');
     brand.className = 'footer-brand';
@@ -171,11 +179,12 @@ export default async function decorate(block) {
   footer.append(columns);
   footer.append(document.createElement('hr'));
 
-  if (copyrightDiv?.textContent.trim()) {
+  const copyrightCell = copyrightDiv?.firstElementChild;
+  if (copyrightCell?.textContent.trim()) {
     const copyright = document.createElement('p');
     copyright.className = 'footer-copyright';
     moveInstrumentation(copyrightDiv, copyright);
-    copyright.append(...copyrightDiv.childNodes);
+    copyright.append(...copyrightCell.childNodes);
     footer.append(copyright);
   }
 

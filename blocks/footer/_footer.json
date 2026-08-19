@@ -59,12 +59,6 @@
           "multi": false
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "logoAlt",
-          "label": "Logo Alt Text"
-        },
-        {
           "component": "aem-content",
           "name": "logoLink",
           "label": "Logo Link"
