@@ -74,12 +74,14 @@ function decorateColumns(content) {
 /**
  * Finds the social icon links paragraph and marks it for styling.
  * @param {Element} content The default content wrapper
+ * @returns {Element} The social links wrapper, if found
  */
 function decorateSocialLinks(content) {
   const icons = content.querySelectorAll(':scope > p span.icon');
-  if (!icons.length) return;
+  if (!icons.length) return null;
   const wrapper = icons[0].closest('p');
   wrapper.classList.add('footer-social-links');
+  return wrapper;
 }
 
 /**
@@ -99,13 +101,14 @@ export default async function decorate(block) {
 
   const content = footer.querySelector('.default-content-wrapper');
   if (content) {
+    const socialLinks = decorateSocialLinks(content);
     const columns = decorateColumns(content);
     if (columns) {
+      if (socialLinks) columns.append(socialLinks);
       const hr = content.querySelector('hr');
       if (hr) hr.after(columns);
       else content.append(columns);
     }
-    decorateSocialLinks(content);
   }
 
   block.append(footer);
